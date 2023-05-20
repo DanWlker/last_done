@@ -9,6 +9,16 @@ List<LastDoneItem> lastDoneItemList(LastDoneItemListRef ref) {
   return [
     LastDoneItem(id: '001', title: "Wash Clothes"),
     LastDoneItem(id: '001', title: "Find Man Yi for lunch"),
+    LastDoneItem(id: '001', title: "Wash Clothes"),
+    LastDoneItem(id: '001', title: "Find Man Yi for lunch"),
+    LastDoneItem(id: '001', title: "Wash Clothes"),
+    LastDoneItem(id: '001', title: "Find Man Yi for lunch"),
+    LastDoneItem(id: '001', title: "Wash Clothes"),
+    LastDoneItem(id: '001', title: "Find Man Yi for lunch"),
+    LastDoneItem(id: '001', title: "Wash Clothes"),
+    LastDoneItem(id: '001', title: "Find Man Yi for lunch"),
+    LastDoneItem(id: '001', title: "Wash Clothes"),
+    LastDoneItem(id: '001', title: "Find Man Yi for lunch"),
   ];
 }
 

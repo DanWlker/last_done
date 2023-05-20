@@ -4,11 +4,8 @@ import 'package:last_done/home/entity/home_page_display_mode_entity.dart';
 import 'package:last_done/home/model/home_page_model.dart';
 
 class HomePageDisplayModeButton extends ConsumerWidget {
-  final VoidCallback? extraOnPressed;
-
   const HomePageDisplayModeButton({
     super.key,
-    this.extraOnPressed,
   });
 
   @override
@@ -26,7 +23,6 @@ class HomePageDisplayModeButton extends ConsumerWidget {
                 .read(homePageDisplayModeProvider.notifier)
                 .changeDisplayMode(HomePageDisplayModeEntity.grid);
         }
-        extraOnPressed?.call();
       },
       icon: Icon(
         ref.watch(homePageDisplayModeProvider) == HomePageDisplayModeEntity.list
