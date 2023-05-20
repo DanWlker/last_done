@@ -27,7 +27,10 @@ class HomePage extends ConsumerWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: ref.watch(lastDoneItemListProvider).length,
                 proxyDecorator: (child, index, animation) {
-                  return child.animate().scaleXY(end: 1.1);
+                  return child
+                      .animate()
+                      .scaleXY(end: 1.05)
+                      .shake(rotation: 0.05);
                 },
                 itemBuilder: (context, index) {
                   return Container(
@@ -68,7 +71,10 @@ class HomePage extends ConsumerWidget {
               )
             : ReorderableGridView.builder(
                 proxyDecorator: (child, index, animation) {
-                  return child.animate().scaleXY(end: 1.1);
+                  return child
+                      .animate()
+                      .scaleXY(end: 1.1)
+                      .shake(rotation: 0.05);
                 },
                 physics: const BouncingScrollPhysics(),
                 itemCount: ref.watch(lastDoneItemListProvider).length,
