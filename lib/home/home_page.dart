@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:last_done/home/entity/home_page_display_mode_entity.dart';
-import 'package:last_done/home/model/home_page_model.dart';
+import 'package:last_done/home/model/home_page_display_mode_model.dart';
+import 'package:last_done/home/model/last_done_item_list_model.dart';
 import 'package:last_done/home/widget/home_page_display_mode_button.dart';
 import 'package:flutter_animate/flutter_animate.dart';
 import 'package:reorderable_grid/reorderable_grid.dart';
@@ -99,11 +100,8 @@ class _HomePageState extends ConsumerState<HomePage> {
                         .fadeIn(),
                   );
                 },
-                onReorder: (oldIndex, newIndex) {
-                  ref
-                      .read(lastDoneItemListProvider.notifier)
-                      .onReorder(oldIndex, newIndex);
-                },
+                onReorder:
+                    ref.read(lastDoneItemListProvider.notifier).onReorder,
               ),
       ),
     );

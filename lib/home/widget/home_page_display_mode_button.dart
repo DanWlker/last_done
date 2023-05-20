@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:last_done/home/entity/home_page_display_mode_entity.dart';
-import 'package:last_done/home/model/home_page_model.dart';
+import 'package:last_done/home/model/home_page_display_mode_model.dart';
 
 class HomePageDisplayModeButton extends ConsumerWidget {
   const HomePageDisplayModeButton({

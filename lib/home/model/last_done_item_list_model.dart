@@ -1,8 +1,7 @@
-import 'package:last_done/home/entity/home_page_display_mode_entity.dart';
 import 'package:last_done/home/entity/last_done_item.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
-part 'home_page_model.g.dart';
+part 'last_done_item_list_model.g.dart';
 
 @riverpod
 class LastDoneItemList extends _$LastDoneItemList {
@@ -22,21 +21,7 @@ class LastDoneItemList extends _$LastDoneItemList {
   }
 
   void onReorder(int oldIndex, int newIndex) {
-    print("oldIndex: $oldIndex, newIndex: $newIndex");
-
     final itemInQuestion = state.removeAt(oldIndex);
     state.insert(newIndex, itemInQuestion);
-  }
-}
-
-@riverpod
-class HomePageDisplayMode extends _$HomePageDisplayMode {
-  @override
-  build() {
-    return HomePageDisplayModeEntity.list;
-  }
-
-  void changeDisplayMode(HomePageDisplayModeEntity homePageDisplayModeEntity) {
-    state = homePageDisplayModeEntity;
   }
 }

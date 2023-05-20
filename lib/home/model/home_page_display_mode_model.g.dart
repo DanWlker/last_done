@@ -1,27 +1,11 @@
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
-part of 'home_page_model.dart';
+part of 'home_page_display_mode_model.dart';
 
 // **************************************************************************
 // RiverpodGenerator
 // **************************************************************************
 
-String _$lastDoneItemListHash() => r'1015e186f7b4d3042d2a647244ac1d4943fe06d2';
-
-/// See also [LastDoneItemList].
-@ProviderFor(LastDoneItemList)
-final lastDoneItemListProvider =
-    AutoDisposeNotifierProvider<LastDoneItemList, List<LastDoneItem>>.internal(
-  LastDoneItemList.new,
-  name: r'lastDoneItemListProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$lastDoneItemListHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
-
-typedef _$LastDoneItemList = AutoDisposeNotifier<List<LastDoneItem>>;
 String _$homePageDisplayModeHash() =>
     r'dae46925825dbbedc13edef8bd333296fafb6143';
 
