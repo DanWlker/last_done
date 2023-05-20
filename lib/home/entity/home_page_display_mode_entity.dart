@@ -1,0 +1,4 @@
+enum HomePageDisplayModeEntity {
+  list,
+  grid,
+}
