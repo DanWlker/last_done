@@ -27,10 +27,10 @@ class HomePage extends ConsumerWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: ref.watch(lastDoneItemListProvider).length,
                 proxyDecorator: (child, index, animation) {
-                  return child
-                      .animate()
-                      .scaleXY(end: 1.05)
-                      .shake(rotation: 0.05);
+                  return child.animate().scaleXY(end: 1.05).shake(
+                        rotation: 0.03,
+                        delay: const Duration(milliseconds: 300),
+                      );
                 },
                 itemBuilder: (context, index) {
                   return Container(
@@ -48,9 +48,10 @@ class HomePage extends ConsumerWidget {
                                     .title),
                               ),
                             ))
-                        .animate()
-                        .slide(
+                        .animate(
                           delay: Duration(milliseconds: index * 40),
+                        )
+                        .slide(
                           duration: const Duration(milliseconds: 200),
                           begin: const Offset(0, 1),
                           end: const Offset(0, 0),
@@ -71,10 +72,10 @@ class HomePage extends ConsumerWidget {
               )
             : ReorderableGridView.builder(
                 proxyDecorator: (child, index, animation) {
-                  return child
-                      .animate()
-                      .scaleXY(end: 1.1)
-                      .shake(rotation: 0.05);
+                  return child.animate().scaleXY(end: 1.1).shake(
+                        rotation: 0.03,
+                        delay: const Duration(milliseconds: 300),
+                      );
                 },
                 physics: const BouncingScrollPhysics(),
                 itemCount: ref.watch(lastDoneItemListProvider).length,
@@ -91,9 +92,10 @@ class HomePage extends ConsumerWidget {
                       child: Text(
                           ref.watch(lastDoneItemListProvider)[index].title),
                     )
-                        .animate()
+                        .animate(
+                          delay: Duration(milliseconds: index * 20),
+                        )
                         .scaleXY(
-                          delay: Duration(milliseconds: index * 40),
                           begin: 0,
                           end: 1,
                           curve: Curves.easeOut,

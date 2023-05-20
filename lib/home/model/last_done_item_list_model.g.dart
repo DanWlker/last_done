@@ -6,7 +6,7 @@ part of 'last_done_item_list_model.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$lastDoneItemListHash() => r'b747e3d91adc4b8c6a5b2d9af4a6664d19b464d8';
+String _$lastDoneItemListHash() => r'930ca3d3b4e4dcf4c2e29cffa489ca8e7e5d91ce';
 
 /// See also [LastDoneItemList].
 @ProviderFor(LastDoneItemList)
