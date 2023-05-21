@@ -5,6 +5,9 @@ import 'package:last_done/home/model/home_page_display_mode_model.dart';
 import 'package:last_done/home/model/last_done_item_list_model.dart';
 import 'package:last_done/home/widget/home_page_display_mode_button.dart';
 import 'package:flutter_animate/flutter_animate.dart';
+import 'package:last_done/last_done_card/last_done_card_grid_variant.dart';
+import 'package:last_done/last_done_card/last_done_card_list_variant.dart';
+import 'package:last_done/theme/theme_change_button.dart';
 import 'package:reorderable_grid/reorderable_grid.dart';
 
 class HomePage extends ConsumerWidget {
@@ -14,9 +17,12 @@ class HomePage extends ConsumerWidget {
   Widget build(BuildContext context, WidgetRef ref) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Theme.of(context).colorScheme.inversePrimary,
+        backgroundColor: Theme.of(context).canvasColor,
+        foregroundColor: Theme.of(context).textTheme.bodyMedium?.color,
         title: const Text('Home'),
         centerTitle: true,
+        elevation: 0,
+        leading: const ThemeChangeButton(),
         actions: const [HomePageDisplayModeButton()],
       ),
       body: Padding(
@@ -27,27 +33,19 @@ class HomePage extends ConsumerWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: ref.watch(lastDoneItemListProvider).length,
                 proxyDecorator: (child, index, animation) {
-                  return child.animate().scaleXY(end: 1.05).shake(
-                        rotation: 0.03,
-                        delay: const Duration(milliseconds: 300),
-                      );
+                  return Container(
+                    child: child.animate().scaleXY(end: 1.05).shake(
+                          rotation: 0.03,
+                          delay: const Duration(milliseconds: 300),
+                        ),
+                  );
                 },
                 itemBuilder: (context, index) {
                   return Container(
                     key: ValueKey('reorderable$index'),
-                    child: Card(
-                            shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(8),
-                            ),
-                            child: InkWell(
-                              onTap: () {},
-                              child: Padding(
-                                padding: const EdgeInsets.all(20.0),
-                                child: Text(ref
-                                    .watch(lastDoneItemListProvider)[index]
-                                    .title),
-                              ),
-                            ))
+                    child: LastDoneCardListVariant(
+                      item: ref.watch(lastDoneItemListProvider)[index],
+                    )
                         .animate(
                           delay: Duration(milliseconds: index * 40),
                         )
@@ -72,7 +70,18 @@ class HomePage extends ConsumerWidget {
               )
             : ReorderableGridView.builder(
                 proxyDecorator: (child, index, animation) {
-                  return child.animate().scaleXY(end: 1.1).shake(
+                  return Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(8),
+                      border: Border.all(
+                        color: ref
+                            .watch(lastDoneItemListProvider)[index]
+                            .indicatorColor,
+                        width: 2,
+                      ),
+                    ),
+                    child: child,
+                  ).animate().scaleXY(end: 1.1).shake(
                         rotation: 0.03,
                         delay: const Duration(milliseconds: 300),
                       );
@@ -80,17 +89,15 @@ class HomePage extends ConsumerWidget {
                 physics: const BouncingScrollPhysics(),
                 itemCount: ref.watch(lastDoneItemListProvider).length,
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  mainAxisSpacing: 8,
+                  crossAxisSpacing: 8,
                   crossAxisCount: 3,
                 ),
                 itemBuilder: (context, index) {
                   return Container(
                     key: ValueKey('reorderable$index'),
-                    child: Card(
-                      shape: RoundedRectangleBorder(
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: Text(
-                          ref.watch(lastDoneItemListProvider)[index].title),
+                    child: LastDoneCardGridVariant(
+                      item: ref.watch(lastDoneItemListProvider)[index],
                     )
                         .animate(
                           delay: Duration(milliseconds: index * 20),

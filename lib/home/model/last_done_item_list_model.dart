@@ -1,4 +1,4 @@
-import 'package:last_done/home/entity/last_done_item.dart';
+import 'package:last_done/last_done_card/entity/last_done_item.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 
 part 'last_done_item_list_model.g.dart';
