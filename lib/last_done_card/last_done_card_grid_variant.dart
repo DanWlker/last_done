@@ -23,6 +23,7 @@ class LastDoneCardGridVariant extends ConsumerWidget {
     return OpenContainer(
       closedShape:
           RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      openShape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
       openColor: Theme.of(context).cardColor,
       closedColor: Theme.of(context).cardColor,
       transitionType: ContainerTransitionType.fade,

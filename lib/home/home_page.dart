@@ -49,7 +49,9 @@ class HomePage extends ConsumerWidget {
                       child: LastDoneCardListVariant(
                         item: ref.watch(lastDoneItemListProvider)[index],
                         openBuilder: (BuildContext context, VoidCallback _) {
-                          return const LastDoneEditPage();
+                          return LastDoneEditPage(
+                            item: ref.read(lastDoneItemListProvider)[index],
+                          );
                         },
                       )
                           .animate(
@@ -106,7 +108,9 @@ class HomePage extends ConsumerWidget {
                     child: LastDoneCardGridVariant(
                       item: ref.watch(lastDoneItemListProvider)[index],
                       openBuilder: (BuildContext context, VoidCallback _) {
-                        return const LastDoneEditPage();
+                        return LastDoneEditPage(
+                          item: ref.read(lastDoneItemListProvider)[index],
+                        );
                       },
                     )
                         .animate(

@@ -7,7 +7,7 @@ part 'theme_model.g.dart';
 class ThemeBrightness extends _$ThemeBrightness {
   @override
   Brightness build() {
-    return Brightness.light;
+    return Brightness.dark;
   }
 
   switchTheme() {
