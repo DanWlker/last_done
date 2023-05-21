@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:last_done/home/entity/home_page_display_mode_entity.dart';
 import 'package:last_done/home/model/home_page_display_mode_model.dart';
 import 'package:last_done/home/model/last_done_item_list_model.dart';
 import 'package:last_done/home/widget/home_page_display_mode_button.dart';
-import 'package:flutter_animate/flutter_animate.dart';
 import 'package:last_done/last_done_card/last_done_card_grid_variant.dart';
 import 'package:last_done/last_done_card/last_done_card_list_variant.dart';
+import 'package:last_done/last_done_edit/last_done_edit_page.dart';
 import 'package:last_done/theme/theme_change_button.dart';
 import 'package:reorderable_grid/reorderable_grid.dart';
 
@@ -43,19 +44,25 @@ class HomePage extends ConsumerWidget {
                 itemBuilder: (context, index) {
                   return Container(
                     key: ValueKey('reorderable$index'),
-                    child: LastDoneCardListVariant(
-                      item: ref.watch(lastDoneItemListProvider)[index],
-                    )
-                        .animate(
-                          delay: Duration(milliseconds: index * 40),
-                        )
-                        .slide(
-                          duration: const Duration(milliseconds: 200),
-                          begin: const Offset(0, 1),
-                          end: const Offset(0, 0),
-                          curve: Curves.easeOut,
-                        )
-                        .fadeIn(),
+                    child: Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: LastDoneCardListVariant(
+                        item: ref.watch(lastDoneItemListProvider)[index],
+                        openBuilder: (BuildContext context, VoidCallback _) {
+                          return const LastDoneEditPage();
+                        },
+                      )
+                          .animate(
+                            delay: Duration(milliseconds: index * 40),
+                          )
+                          .slide(
+                            duration: const Duration(milliseconds: 200),
+                            begin: const Offset(0, 1),
+                            end: const Offset(0, 0),
+                            curve: Curves.easeOut,
+                          )
+                          .fadeIn(),
+                    ),
                   );
                 },
                 onReorder: (oldIndex, newIndex) {
@@ -98,6 +105,9 @@ class HomePage extends ConsumerWidget {
                     key: ValueKey('reorderable$index'),
                     child: LastDoneCardGridVariant(
                       item: ref.watch(lastDoneItemListProvider)[index],
+                      openBuilder: (BuildContext context, VoidCallback _) {
+                        return const LastDoneEditPage();
+                      },
                     )
                         .animate(
                           delay: Duration(milliseconds: index * 20),

@@ -43,6 +43,7 @@ dependencies:
   freezed_annotation: ^2.2.0
   json_annotation: ^4.8.1
   reorderable_grid: ^1.0.6
+  animations: ^2.0.7
 
 dev_dependencies:
   flutter_test:
